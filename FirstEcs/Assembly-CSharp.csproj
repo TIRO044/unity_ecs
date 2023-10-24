@@ -57,10 +57,14 @@
     <Analyzer Include="/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/PackageCache/com.unity.entities@1.0.16/Unity.Entities/SourceGenerators/Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets/Script/First_Ecs.cs" />
+     <Compile Include="Assets/Tutorial/MainThread/RotationSystem.cs" />
+     <Compile Include="Assets/Tutorial/Common/ExcuteAuthoring.cs" />
      <Folder Include="Assets" />
-     <Folder Include="Assets/Script" />
-     <Folder Include="Assets/Scenes" />
+     <Folder Include="Assets/Tutorial/Common" />
+     <Folder Include="Assets/SceneDependencyCache" />
+     <Folder Include="Assets/Tutorial" />
+     <Folder Include="Assets/Tutorial/MainThread" />
+     <Folder Include="Assets/Tutorial/MainThread/MainThreadScene" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
@@ -310,6 +314,9 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Collections.LowLevel.ILSupport">
+     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/PackageCache/com.unity.collections@2.1.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+     </Reference>
      <Reference Include="ReportGeneratorMerged">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/PackageCache/com.unity.testtools.codecoverage@1.2.4/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
      </Reference>
@@ -318,9 +325,6 @@
      </Reference>
      <Reference Include="Mono.Cecil">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/PackageCache/com.unity.nuget.mono-cecil@1.11.4/Mono.Cecil.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/PackageCache/com.unity.collections@2.1.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/NetStandard/ref/2.1.0/netstandard.dll</HintPath>
@@ -730,9 +734,6 @@
      <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
      </Reference>
@@ -742,11 +743,14 @@
      <Reference Include="Unity.Collections">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Collections.Editor">
-     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Collections.Editor.dll</HintPath>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Deformations">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Deformations.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Collections.Editor">
+     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Collections.Editor.dll</HintPath>
      </Reference>
      <Reference Include="PPv2URPConverters">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
@@ -802,11 +806,11 @@
      <Reference Include="Unity.VisualScripting.Core">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
      </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.VisualScripting.Core.Editor">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Entities.Graphics">
      <HintPath>/Users/jeonghojun/Desktop/unity/ecs/unity_ecs/FirstEcs/Library/ScriptAssemblies/Unity.Entities.Graphics.dll</HintPath>
