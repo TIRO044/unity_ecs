@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Unity.Transforms;
 
-public class RotationSystem : MonoBehaviour
+namespace Cube.System
 {
-    // Start is called before the first frame update
-    void Start()
+    using Unity.Entities;
+
+    public partial struct RotationSystem : ISystem
     {
-        
+        public void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<Excute.IJobEntity>();
+        }
+
+        public void OnUpdate(ref SystemState state)
+        {
+            var jobEntity = new RotateAndScaleJobEntity();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    partial struct RotateAndScaleJobEntity : IJobEntity
     {
-        
+
+        void Execute(ref LocalTransform localTransform, ref PostTransformMatrix postTransformMatrix)
+        {
+            
+        }
     }
 }
