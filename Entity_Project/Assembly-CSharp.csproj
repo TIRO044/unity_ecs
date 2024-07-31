@@ -41,7 +41,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.entities@1.2.3\Unity.Entities\SourceGenerators\AspectGenerator.dll" />
@@ -59,8 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\ConfigEntity\ConfigData.cs" />
+    <Compile Include="Assets\Script\Player\PlayerEntity.cs" />
+    <Compile Include="Assets\Script\Actor\ActorGravitySystem.cs" />
     <Compile Include="Assets\Script\ConfigEntity\ConfigEntity.cs" />
+    <Compile Include="Assets\Script\Player\PlayerEntitySystem.cs" />
+    <Compile Include="Assets\Script\Actor\ActorEntityData.cs" />
     <Compile Include="Assets\Script\ConfigEntity\ConfigSystem.cs" />
+    <Compile Include="Assets\Script\Player\PlayerEntityData.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -310,6 +314,9 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.collections@2.4.2\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
@@ -318,9 +325,6 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.collections@2.4.2\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -733,14 +737,14 @@
     <Reference Include="Unity.Collections">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Deformations">
+      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Deformations.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Deformations">
-      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Deformations.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
@@ -787,11 +791,11 @@
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Graphics">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Entities.Graphics.dll</HintPath>
@@ -799,14 +803,14 @@
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Transforms.Hybrid">
+      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Serialization.Editor">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Serialization.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7363574362575298315}
   - component: {fileID: 4120917072136979087}
   - component: {fileID: 4187358334014844279}
+  - component: {fileID: -8989744301591542229}
   m_Layer: 0
   m_Name: PlayerCube2
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8989744301591542229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788557971771943338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3527d62dcd754c4a8ce51b85a63d04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

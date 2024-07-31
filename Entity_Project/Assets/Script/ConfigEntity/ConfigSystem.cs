@@ -19,6 +19,8 @@ public partial struct ConfigSystem : ISystem
                 var playerPrefab = state.EntityManager.Instantiate(configData.playerEntityPrefab);
                 LocalTransform newLocalTransform = LocalTransform.FromRotation(Quaternion.Euler(0, 180, 0));
                 state.EntityManager.SetComponentData(playerPrefab, newLocalTransform);
+                // state.EntityManager.SetComponentData(playerPrefab, new PlayerEntityData());
+                state.Enabled = false;
             }
             else
             {
@@ -26,6 +28,5 @@ public partial struct ConfigSystem : ISystem
             }
         }
         
-        state.Enabled = false;
     }
 }
