@@ -57,14 +57,28 @@
     <Analyzer Include="D:\entity_\unity_ecs\Entity_Project\Library\PackageCache\com.unity.entities@1.2.3\Unity.Entities\SourceGenerators\SystemGenerator.Common.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\EventHandler\JumpEvent.cs" />
     <Compile Include="Assets\doc\StateMachine_Plan.cs" />
     <Compile Include="Assets\Script\ConfigEntity\ConfigData.cs" />
+    <Compile Include="Assets\Script\ST\Nodes\IdleNode.cs" />
     <Compile Include="Assets\Script\Player\PlayerEntity.cs" />
+    <Compile Include="Assets\Script\ST\Nodes\MoveNode.cs" />
     <Compile Include="Assets\Script\Actor\ActorGravitySystem.cs" />
+    <Compile Include="Assets\Script\ST\Nodes\STNode.cs" />
     <Compile Include="Assets\Script\ConfigEntity\ConfigEntity.cs" />
+    <Compile Include="Assets\Script\ST\StateMachine.cs" />
+    <Compile Include="Assets\Script\EventHandler\MoveEvent.cs" />
+    <Compile Include="Assets\Script\Actor\Actor.cs" />
+    <Compile Include="Assets\Script\EventHandler\EventManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerEntitySystem.cs" />
     <Compile Include="Assets\Script\Actor\ActorEntityData.cs" />
+    <Compile Include="Assets\Script\ST\Nodes\JumpNode.cs" />
+    <Compile Include="Assets\Script\EventHandler\IEvent.cs" />
     <Compile Include="Assets\Script\ConfigEntity\ConfigSystem.cs" />
+    <Compile Include="Assets\Script\EventHandler\IEventWatcher.cs" />
+    <Compile Include="Assets\Tilemap\InfiniteTileMap.cs" />
+    <Compile Include="Assets\Tilemap\TilemapEx.cs" />
+    <Compile Include="Assets\Script\ConstUpdate\Playerinput.cs" />
     <Compile Include="Assets\Script\Player\PlayerEntityData.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -710,6 +724,9 @@
     </Reference>
     <Reference Include="Unity.Entities.Build">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.Entities.Build.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>D:\entity_\unity_ecs\Entity_Project\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
