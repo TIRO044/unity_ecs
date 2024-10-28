@@ -1,29 +1,52 @@
 ﻿namespace Assets.Script.Tile
 {
-    public class TileColonyEntity
+    using UnityEngine;
+    
+    public class TileColonyEntity : MonoBehaviour
     {
-        public float EntitySize;
+        public GameObject cubePrefab;  // 큐브 프리팹
+        public int rows = 10;          // 행의 개수
+        public int columns = 10;       // 열의 개수
+        public float cubeSize = 1.0f;  // 각 큐브의 크기
 
-        public int Width;
-        public int Height;
-
-        public void Init()
+        void Start()
         {
-            var colonyHeight = EntitySize * Height;
-            var colonyWidth = EntitySize * Width;
+            Vector3 totalPosition = Vector3.zero;  // 큐브들의 총합 위치 계산
+            Transform parentTransform = transform;  // 부모 Transform
 
-            var entityStartPositionX = -(colonyWidth - EntitySize) / 2;
-            var entityStartPositionY = -(colonyHeight - EntitySize) / 2;
-
-            for (int h = 0; h < Height; h++)
+            // 큐브 생성 및 배치
+            for (int row = 0; row < rows; row++)
             {
-                var height = entityStartPositionY + h * EntitySize;
-                for (int w = 0; w < Width; w++)
+                for (int col = 0; col < columns; col++)
                 {
-                    var width = entityStartPositionX + w * EntitySize;
+                    // 큐브 생성
+                    GameObject cube = Instantiate(cubePrefab, parentTransform);
+
+                    var tileEntity = cube.GetComponent<TileEntity>();
                     
-                    // create instance
-                }        
+                    // 큐브의 위치 계산 (부모의 로컬 공간에서)
+                    float xPos = (col - (columns - 1) / 2.0f) * cubeSize;
+                    float yPos = (row - (rows - 1) / 2.0f) * cubeSize;
+
+                    Vector3 cubePosition = new Vector3(xPos, yPos, 0);
+
+                    // 총합 위치에 현재 큐브의 위치 더하기
+                    totalPosition += cube.transform.position;
+                    tileEntity.SetWH(cubeSize, cubeSize);
+                    tileEntity.SetLocalPosition(cubePosition);
+                }
+            }
+
+            // 자식들의 중심 계산 (평균값)
+            Vector3 centerPosition = totalPosition / (rows * columns);
+
+            // 부모의 위치를 자식들의 중심으로 이동
+            parentTransform.position = centerPosition;
+
+            // 부모 위치를 기준으로 모든 자식들의 로컬 위치 재조정
+            foreach (Transform child in parentTransform)
+            {
+                child.localPosition -= parentTransform.position;
             }
         }
     }
