@@ -18,7 +18,7 @@ public class SpriteSheetPreviewWindow : EditorWindow
         GetWindow<SpriteSheetPreviewWindow>("SpriteSheet Previewer");
     }
 
-       private void OnGUI()
+    private void OnGUI()
     {
         GUILayout.Label("Drag and Drop a Sprite Sheet", EditorStyles.boldLabel);
 
@@ -28,32 +28,16 @@ public class SpriteSheetPreviewWindow : EditorWindow
         // 스프라이트 시트가 있을 때
         if (spriteSheet != null)
         {
-            // GUILayout.Label("Sprite Sheet Preview:");
-
-            // 스프라이트 시트에서 스프라이트들을 가져옴
             if (sprites == null && GUILayout.Button("Load Sprites"))
             {
                 LoadSpritesFromSheet();
             }
 
-            // 지정한 너비 내에서 스프라이트 정렬 및 줄바꿈 처리
             if (sprites != null)
             {
-                HandleMouseEvents();  // 마우스 이벤트 처리
-
                 float currentWidth = 0;  // 현재 줄의 너비
                 float yOffset = 50;      // 첫 번째 줄의 Y 위치 설정
 
-                var maxLength = sprites.Length < maxRowCount ? sprites.Length : maxRowCount;
-                var displaycount = maxLength * spriteDisplaySize;
-
-                var startXPosition = 10;
-                var startYPosition = 50;
-
-                int count = 0;
-                
-                GUILayout.BeginArea(new Rect(new Vector2(startXPosition, startYPosition), new Vector2(displaycount, displaycount + 5)));
-                GUILayout.BeginHorizontal();
                 foreach (var sprite in sprites)
                 {
                     Rect textureRect = sprite.textureRect;
@@ -65,31 +49,34 @@ public class SpriteSheetPreviewWindow : EditorWindow
                     );
 
                     // 현재 줄의 너비가 maxWidth를 넘으면 줄바꿈
-                    if (currentWidth + textureRect.width > maxWidth)
+                    if (currentWidth + spriteDisplaySize > maxWidth)
                     {
-                        count++;
-                        GUILayout.EndHorizontal();  // 현재 줄 종료
-                        GUILayout.EndArea();
-                        GUILayout.BeginArea(new Rect(new Vector2(startXPosition, startYPosition + count * spriteDisplaySize + 5), new Vector2(displaycount, displaycount)));
-                        GUILayout.BeginHorizontal();  // 새 줄 시작
-                        currentWidth = 0;  // 새 줄이므로 너비 초기화
+                        currentWidth = 0;
+                        yOffset += spriteDisplaySize + 5;
                     }
 
-                    // 스프라이트를 그릴 실제 위치 Rect 설정
-                    Rect spriteRect = GUILayoutUtility.GetRect(spriteDisplaySize, spriteDisplaySize);
+                    // 스프라이트를 10x10 크기로 고정하여 그릴 위치 Rect 설정
+                    Rect spriteRect = new Rect(10 + currentWidth, yOffset, spriteDisplaySize, spriteDisplaySize);
                     GUI.DrawTextureWithTexCoords(spriteRect, sprite.texture, uvRect);
 
-                    var rect = GUILayoutUtility.GetLastRect();
-                    //DrawSpriteOutline(spriteRect);  // 경계 표시
+                    // 클릭 이벤트 처리
+                    if (Event.current.type == EventType.MouseDown && spriteRect.Contains(Event.current.mousePosition))
+                    {
+                        selectedSprite = sprite;
+                        Repaint();
+                    }
 
-                    currentWidth += textureRect.width;  // 현재 줄 너비 업데이트
+                    currentWidth += spriteDisplaySize + 5;  // 다음 스프라이트의 X 위치 업데이트
                 }
-                
-                GUILayout.EndHorizontal();
-                GUILayout.EndArea();
-                
-                if(selectedSprite != null)
-                    GUILayout.Label($"selected : {selectedSprite}");
+
+                // 선택된 스프라이트 정보 표시
+                if (selectedSprite != null)
+                {
+                    GUILayout.Space(20 + yOffset);
+                    GUILayout.Label($"Selected Sprite: {selectedSprite.name}");
+                    GUILayout.Label($"Position: {selectedSprite.rect.position}");
+                    GUILayout.Label($"Size: {selectedSprite.rect.size}");
+                }
             }
         }
     }
