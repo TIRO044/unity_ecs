@@ -4,6 +4,7 @@ namespace Assets.Script.Tile
 {
     public class TileEntity : MonoBehaviour
     {
+        public Sprite Sprite;
         public float Width;
         public float Height;
 
@@ -16,6 +17,11 @@ namespace Assets.Script.Tile
         public void SetLocalPosition(Vector3 pos)
         {
             this.transform.localPosition = pos;
+        }
+
+        public void SetSprite(Sprite sprite)
+        {
+            this.Sprite = sprite;
         }
 
         private void OnDrawGizmosSelected()
