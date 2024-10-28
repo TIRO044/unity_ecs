@@ -78,6 +78,8 @@ public class SpriteSheetPreviewWindow : EditorWindow
                     // 스프라이트를 그릴 실제 위치 Rect 설정
                     Rect spriteRect = GUILayoutUtility.GetRect(spriteDisplaySize, spriteDisplaySize);
                     GUI.DrawTextureWithTexCoords(spriteRect, sprite.texture, uvRect);
+
+                    var rect = GUILayoutUtility.GetLastRect();
                     //DrawSpriteOutline(spriteRect);  // 경계 표시
 
                     currentWidth += textureRect.width;  // 현재 줄 너비 업데이트
@@ -85,6 +87,9 @@ public class SpriteSheetPreviewWindow : EditorWindow
                 
                 GUILayout.EndHorizontal();
                 GUILayout.EndArea();
+                
+                if(selectedSprite != null)
+                    GUILayout.Label($"selected : {selectedSprite}");
             }
         }
     }
@@ -128,19 +133,6 @@ public class SpriteSheetPreviewWindow : EditorWindow
         {
             Vector2 mousePosition = e.mousePosition;
 
-            // 모든 스프라이트에 대해 클릭한 위치가 스프라이트 경계 안에 있는지 확인
-            foreach (var sprite in sprites)
-            {
-                Rect textureRect = sprite.textureRect;
-
-                // 마우스 좌표가 스프라이트 경계 내에 있는지 확인
-                if (textureRect.Contains(mousePosition))
-                {
-                    selectedSprite = sprite;
-                    Repaint();  // 선택된 스프라이트 정보를 표시하기 위해 창을 다시 그리기
-                    break;
-                }
-            }
         }
     }
 }
