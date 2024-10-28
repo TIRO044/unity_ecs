@@ -9,20 +9,20 @@ namespace Script.EventHandler
 
         public static void RegisterEventHandle(EventTag.Tag eventTag, IEventWatcher watcher)
         {
-            if (_handler.TryGetValue(i, out var watchers) == false)
+            if (_handler.TryGetValue(eventTag, out var watchers) == false)
             {
                 watchers = new HashSet<IEventWatcher>();
-                _handler.Add(i, watchers);
+                _handler.Add(eventTag, watchers);
             }
 
             watchers.Add(watcher);
         }
 
-        public static void UnRegisterWatcher(int i)
+        public static void UnRegisterWatcher(EventTag.Tag eventTag)
         {
-            if (_handler.ContainsKey(i))
+            if (_handler.ContainsKey(eventTag))
             {
-                _handler.Remove(i);
+                _handler.Remove(eventTag);
             }
         }
 
