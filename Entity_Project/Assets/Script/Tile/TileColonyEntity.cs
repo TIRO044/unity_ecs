@@ -1,16 +1,37 @@
-﻿namespace Assets.Script.Tile
+﻿using System;
+using System.Collections.Generic;
+
+namespace Assets.Script.Tile
 {
     using UnityEngine;
     
     public class TileColonyEntity : MonoBehaviour
     {
+        private List<TileEntity> _entities = new List<TileEntity>();
         public GameObject cubePrefab;  // 큐브 프리팹
         public int rows = 10;          // 행의 개수
         public int columns = 10;       // 열의 개수
         public float cubeSize = 1.0f;  // 각 큐브의 크기
 
-        void Start()
+
+        void CleanUp()
         {
+            foreach (var entity in _entities)
+            {
+                DestroyImmediate(entity.gameObject);
+            }
+            
+            _entities.Clear();
+            _entities = null;
+        }
+
+        public void Init()
+        {
+            if (_entities != null)
+            {
+                CleanUp();
+            }
+            
             Vector3 totalPosition = Vector3.zero;  // 큐브들의 총합 위치 계산
             Transform parentTransform = transform;  // 부모 Transform
 
