@@ -5,6 +5,7 @@ namespace Assets.Script.Tile
     public class TileEntity : MonoBehaviour
     {
         public Sprite Sprite;
+        public SpriteRenderer SpriteRenderer;
         public float Width;
         public float Height;
 
@@ -22,6 +23,7 @@ namespace Assets.Script.Tile
         public void SetSprite(Sprite sprite)
         {
             this.Sprite = sprite;
+            this.SpriteRenderer.sprite = sprite;
         }
 
         private void OnDrawGizmos()

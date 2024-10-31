@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-public class SpriteSheetPreviewWindow : EditorWindow
+public class SSW : EditorWindow
 {
     private Texture2D _spriteSheet;  // 스프라이트 시트 원본 텍스처
-    private SpriteInfo _selectedSpriteInfo;  // 선택된 스프라이트
+    public SpriteInfo SelectedSpriteInfo { private set; get; }  // 선택된 스프라이트
 
     private List<SpriteInfo> _spriteInfos = new();
     private Vector3 _scrollViewPos = Vector3.zero;
+
+    public static SSW Ins;    
     
     public class SpriteInfo
     {
@@ -35,7 +37,11 @@ public class SpriteSheetPreviewWindow : EditorWindow
     [MenuItem("TMEditor/SpriteSheet Previewer")]
     public static void ShowWindow()
     {
-        GetWindow<SpriteSheetPreviewWindow>("SpriteSheet Previewer");
+        var instance = GetWindow<SSW>("SpriteSheet Previewer");
+        if (Ins != null)
+            Ins.Close();
+
+        Ins = instance;
     }
 
     private void OnGUI()
@@ -56,13 +62,13 @@ public class SpriteSheetPreviewWindow : EditorWindow
             if (_spriteInfos.Count > 0)
             {
                 // 선택된 스프라이트 정보 표시
-                if (_selectedSpriteInfo != null)
+                if (SelectedSpriteInfo != null)
                 {
                     GUILayout.BeginArea(new Rect(10, 60, 200, 60));
                         GUILayout.BeginVertical();
-                            GUILayout.Label($"Selected Sprite: {_selectedSpriteInfo.Sprite.name}");
-                            GUILayout.Label($"Position: {_selectedSpriteInfo.Sprite.rect.position}");
-                            GUILayout.Label($"Size: {_selectedSpriteInfo.Sprite.rect.size}");
+                            GUILayout.Label($"Selected Sprite: {SelectedSpriteInfo.Sprite.name}");
+                            GUILayout.Label($"Position: {SelectedSpriteInfo.Sprite.rect.position}");
+                            GUILayout.Label($"Size: {SelectedSpriteInfo.Sprite.rect.size}");
                         GUILayout.EndVertical();
                     GUILayout.EndArea();
                 }
@@ -84,7 +90,7 @@ public class SpriteSheetPreviewWindow : EditorWindow
                                             , GUILayout.Width(40)
                                             , GUILayout.Height(40)))
                                     {
-                                        _selectedSpriteInfo = spriteInfo;
+                                        SelectedSpriteInfo = spriteInfo;
                                     }
                                 }
                             GUILayout.EndHorizontal();

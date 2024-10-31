@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
+  SpriteRenderer: {fileID: 8122791448340242553}
   Width: 0
   Height: 0
 --- !u!212 &8122791448340242553

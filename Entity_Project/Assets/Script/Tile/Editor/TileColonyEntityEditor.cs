@@ -29,31 +29,5 @@ namespace Assets.Script.Tile.Editor
                 myScript.Init();
             }
         }
-        
-        private void OnEnable()
-        {
-            SceneView.duringSceneGui += OnScene;
-        }
-
-        private void OnDisable()
-        {
-            SceneView.duringSceneGui -= OnScene;
-        }
-
-        private void OnScene(SceneView sceneView)
-        {
-            TileColonyEntity myScript = (TileColonyEntity)target;
-            
-            if(myScript.Entities.Count == 0)
-                return;
-            
-            foreach (var entity in myScript.Entities)
-            {
-                Handles.color = Color.white; // 선택된 상태일 때 초록색
-                // 박스 그리기
-                Handles.DrawWireCube(entity.transform.position, new Vector3(entity.Width, entity.Height, 1));
-            }            
-            SceneView.RepaintAll();
-        }
     }
 }

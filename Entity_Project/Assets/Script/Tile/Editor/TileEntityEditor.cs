@@ -26,5 +26,10 @@ public class TileEntityEditor : Editor
         
         // 씬 뷰 업데이트
         SceneView.RepaintAll();
+
+        if (SSW.Ins?.SelectedSpriteInfo?.Sprite != null)
+        {
+            myScript.SetSprite(SSW.Ins.SelectedSpriteInfo.Sprite);
+        }
     }
 }
