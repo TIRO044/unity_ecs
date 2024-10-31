@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Assets.Script.Tile
 {
@@ -6,24 +7,26 @@ namespace Assets.Script.Tile
     {
         public Sprite Sprite;
         public SpriteRenderer SpriteRenderer;
+        public BoxCollider2D BoxCollider;
         public float Width;
         public float Height;
 
-        public void SetWH(float width, float heignt)
+        public void SetWH(float width, float height)
         {
             Width = width;
-            Height = heignt;
+            Height = height;
+            BoxCollider.size = new Vector2(Width, Height);
         }
 
         public void SetLocalPosition(Vector3 pos)
         {
-            this.transform.localPosition = pos;
+            transform.localPosition = pos;
         }
 
         public void SetSprite(Sprite sprite)
         {
-            this.Sprite = sprite;
-            this.SpriteRenderer.sprite = sprite;
+            Sprite = sprite;
+            SpriteRenderer.sprite = sprite;
         }
 
         private void OnDrawGizmos()
@@ -40,6 +43,7 @@ namespace Assets.Script.Tile
             
             // 사각형을 중심을 기준으로 그립니다. (크기는 width, height)
             Gizmos.DrawWireCube(Vector3.zero, new Vector3(Width, Height, 0));
+
         }
     }
 }

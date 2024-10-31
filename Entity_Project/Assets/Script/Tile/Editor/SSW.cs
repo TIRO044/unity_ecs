@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using Assets.Script.Tile;
+using Object = UnityEngine.Object;
 
 public class SSW : EditorWindow
 {
@@ -44,6 +47,21 @@ public class SSW : EditorWindow
         Ins = instance;
     }
 
+    private void OnDestroy()
+    {
+        if (Ins != null)
+        {
+            Ins.CleanUp();
+        }
+    }
+
+    private void CleanUp()
+    {
+        SelectedSpriteInfo = null;
+        _spriteSheet = null;
+        _spriteInfos.Clear();
+    }
+    
     private void OnGUI()
     {
         GUILayout.Label("Drag and Drop a Sprite Sheet", EditorStyles.boldLabel);

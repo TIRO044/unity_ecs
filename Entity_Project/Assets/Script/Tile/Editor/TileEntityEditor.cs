@@ -26,6 +26,8 @@ public class TileEntityEditor : Editor
         
         // 씬 뷰 업데이트
         SceneView.RepaintAll();
+      
+        if (SceneView.lastActiveSceneView != sceneView) return;
 
         if (SSW.Ins?.SelectedSpriteInfo?.Sprite != null)
         {

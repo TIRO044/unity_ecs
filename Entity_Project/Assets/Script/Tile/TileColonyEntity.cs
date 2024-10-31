@@ -12,8 +12,7 @@ namespace Assets.Script.Tile
         public int rows = 10;          // 행의 개수
         public int columns = 10;       // 열의 개수
         public float cubeSize = 1.0f;  // 각 큐브의 크기
-
-
+        
         void CleanUp()
         {
             foreach (var entity in Entities)
