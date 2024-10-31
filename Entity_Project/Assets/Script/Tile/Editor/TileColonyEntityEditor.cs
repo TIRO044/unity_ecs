@@ -1,13 +1,10 @@
 using UnityEditor;
-using UnityEditor.SpeedTree.Importer;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Assets.Script.Tile.Editor
 {
     [CustomEditor(typeof(TileColonyEntity))]    
-    public class TileColonyEntityForEditor : UnityEditor.Editor
+    public class TileColonyEntityEditor : UnityEditor.Editor
     {
         // public override VisualElement CreateInspectorGUI()
         // {
@@ -32,7 +29,5 @@ namespace Assets.Script.Tile.Editor
                 myScript.Init();
             }
         }
-
     }
-    
 }

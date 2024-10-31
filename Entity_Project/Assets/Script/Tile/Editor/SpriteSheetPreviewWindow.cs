@@ -94,7 +94,7 @@ public class SpriteSheetPreviewWindow : EditorWindow
             }
         }
     }
-    // 스프라이트 시트에서 잘라진 스프라이트들을 로드
+    
     private void LoadSpritesFromSheet()
     {
         string path = AssetDatabase.GetAssetPath(_spriteSheet);  // 스프라이트 시트의 경로

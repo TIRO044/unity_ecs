@@ -1,10 +1,9 @@
-using System;
 using Assets.Script.Tile;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(TileEntity))]
-public class TileEntityForEditor : Editor
+public class TileEntityEditor : Editor
 {
     private void OnSceneGUI()
     {
