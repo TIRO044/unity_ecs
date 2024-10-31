@@ -7,7 +7,7 @@ namespace Assets.Script.Tile
     
     public class TileColonyEntity : MonoBehaviour
     {
-        private List<TileEntity> _entities = new List<TileEntity>();
+        public List<TileEntity> Entities { private set; get; }=  new List<TileEntity>();
         public GameObject cubePrefab;  // 큐브 프리팹
         public int rows = 10;          // 행의 개수
         public int columns = 10;       // 열의 개수
@@ -16,18 +16,18 @@ namespace Assets.Script.Tile
 
         void CleanUp()
         {
-            foreach (var entity in _entities)
+            foreach (var entity in Entities)
             {
                 DestroyImmediate(entity.gameObject);
             }
             
-            _entities.Clear();
-            _entities = null;
+            Entities.Clear();
+            Entities = null;
         }
 
         public void Init()
         {
-            if (_entities != null)
+            if (Entities != null)
             {
                 CleanUp();
             }
